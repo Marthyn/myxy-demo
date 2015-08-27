@@ -1,0 +1,12 @@
+<!-- <form method="put" action="<%= event_path(@event.id) %>"> -->
+<%= form_for :event, url: event_path(@event.id), method: :put do |f|%>
+  <div class="form-inputs">
+    <%= f.text_field :title, value: @event.title %>
+    <%= f.text_field :event_type, value: @event.event_type %>
+  </div>
+
+  <div>
+    <input type="submit">
+  </div>
+<!-- </form> -->
+<% end %>
