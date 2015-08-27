@@ -1,5 +1,8 @@
 # Myxydemo
 
+This repo is a Rails app which uses the [Myxy](https://github.com/Marthyn/myxy) gem, an API wrapper for the Calendar42
+API.
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
