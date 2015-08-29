@@ -1,7 +1,7 @@
 PATH
   remote: ../../
   specs:
-    myxy (0.0.0)
+    myxy (0.0.1)
       dotenv (~> 2.0.2)
       faraday
       ffaker

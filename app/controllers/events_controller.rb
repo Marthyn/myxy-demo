@@ -12,20 +12,26 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @path = events_path
+    @method = :post
     @event = Myxy::Event.new
   end
 
   # GET /events/1/edit
   def edit
+    @path = event_path(@event.id)
+    @method = :put
   end
 
   # POST /events
   def create
     @event = Myxy::Event.new(event_params)
-
-    if @event.save
-      redirect_to event_path(@event.id), notice: 'Event was successfully created.'
+    response = @event.save
+    if response.success?
+      new_event = response.first
+      redirect_to event_path(new_event.id), notice: 'Event was successfully created.'
     else
+      flash[:error] = 'Something went wrong with creating the event'
       render :new
     end
   end
