@@ -31,7 +31,7 @@ class EventsController < ApplicationController
       new_event = response.first
       redirect_to event_path(new_event.id), notice: 'Event was successfully created.'
     else
-      flash[:error] = 'Something went wrong with creating the event'
+      flash[:error] = response.error_message
       render :new
     end
   end
@@ -47,8 +47,13 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   def destroy
-    @event.delete
-    redirect_to events_url, notice: 'Event was successfully destroyed.'
+    response = @event.delete
+    if response.success?
+      notice = 'Event was successfully destroyed.'
+    else
+      notice = response.error_message
+    end
+    redirect_to events_url, notice: notice
   end
 
   private

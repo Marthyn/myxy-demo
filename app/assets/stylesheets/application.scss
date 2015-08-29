@@ -6,3 +6,10 @@
 @import "neat";
 @import "base/base";
 @import "refills/flashes";
+
+main {
+  max-width: 1100px;
+  margin: 1em auto;
+  background: #eee;
+  padding: 1em;
+}
