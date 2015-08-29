@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Event type:</strong>
-  <%= @event.event_type %>
-</p>
+<% @event.attributes.each do |attribute| %>
+  <% if attribute[1] %>
+    <p>
+      <strong><%= attribute[0] %></strong>
+      <% if attribute[1].is_a?(Hash) %>
+        <br>
+        <% attribute[1].each do |y| %>
+          <i><%= y[0] %></i> -
+          <%= y[1] %>
+          <br>
+        <% end %>
+      <% else %>
+        <%= raw attribute[1].to_s.html_safe %>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event.id) %> |
 <%= link_to 'Back', events_path %>
